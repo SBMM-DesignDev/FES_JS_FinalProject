@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#1 Movie Directory</title>
+    <title>Show Times</title>
     <link rel="stylesheet" href="style.css">
-    
-    <script src="https://kit.fontawesome.com/d5048d8e17.js" crossorigin="anonymous"></script>
 </head>
-<body class="index__body">
-    <section id="landing">
+<body class="time__body">
+     <section id="landing landing__movie">
         <nav>
             <div class="nav__wrapper">
                 <figure class="img__wrapper--nav">
@@ -40,30 +38,34 @@
                 </ul>
             </div>
         </nav>
-        <header class="header">
-            <div class="header__content">
-                <h1 class="header__title">
-                    America's leading Movie Directory
-                </h1>
-                <h3 class="header__sub-title"> 
-                    Search movies, showtimes and theatres near you
-                </h3>
-                <input class="input input__movie--search" placeholder="Enter Movie or Theatre"></input>
-                <a href="./movies.html" class="movie__nutton__link"> 
-                <button class="button movie__button">
-                    Enjoy!
-                </button>
-               </a> 
-            </br>
-                <input class="input input__zip-code--search" placeholder="Enter Zip Code"></input>
-                <button class="button zip-code__button">
-                    <i class="fa-solid fa-magnifying-glass-location"></i>
-                </button>
+    </section>    
+    <section id="show-times">
+     <div class="container">
+        <div class="row">
+            <div class="time__search--list">
+                <div class="time">
+                    <div class="time-card">
+                        <div class="time-card__container">
+                           
+                             <h2 class="movie-theatre">IMAX Cinema</h3>
+                             <h4 class="movie__times">Show Times</h4>
+                             <div class="movie__list--showtimes">
+                                <p class="movie__show-time">11:40pm</p>
+                                <p class="movie__show-time">1:45pm</p>
+                                <p class="movie__show-time">2:15pm</p>
+                                <p class="movie__show-time">4:15pm</p>
+                                <p class="movie__show-time">6:20pm</p>
+                             </div>   
+                             <h5 class="movie-theatre__location">Movie City, USA</h6>
+                             <p class="movie-theatre--phone">(800)MOV-IE11</p>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </header>
+        </div>
+        </div>
     </section>
-    
-    
-<script src="index.js"></script>
 </body>
 </html>

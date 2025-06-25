@@ -1,5 +1,207 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    color: green;
+    color: red;
+   /* background-color: #242424;*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+
+.index__body {
+    background-image: url("./Assets/MovieScreen_Blnk3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    z-index:5;
+}
+
+.movie__body,
+.time__body {
+    background-color: #242424 !important;
+}
+
+.container {
+    width: 100%;
+    
+    
+}
+
+.row {
+    
+    max-width: 1000px;
+    margin: 0 auto;
+    
+}
+
+/*
+
+LANDING
+
+*/
+
+.nav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    margin-top: 24px; 
+}
+
+.nav__link--list {
+    display: flex;
+    list-style: none;
+    margin-left: 16px;
+}
+
+.nav__link {
+    margin-left: 16px;
+    font-weight: bold;
+}
+
+.nav__link--anchor {
+
+
+}
+
+.img__company--logo {
+    width: 100%;
+    height: 100%;
+    width: 65px;
+    border-radius: 5px;
+    
+}
+
+.img__wrapper--nav {
+    background-color: #121111;
+    border-radius: 5px;
+    border: solid rgb(202, 201, 201) 1px;
+}
+
+
+/*
+
+HEADER
+
+*/
+
+
+
+.header__content {
+    text-align: center;
+}
+
+.header__title {
+    margin-bottom: 8px;
+    font-size: 48px;
+}
+
+.header__sub-title {
+    margin-bottom: 16px;
+}
+
+.input {
+    margin-bottom: 16px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 16px;
+    background-color: rgb(255, 253, 253)
+}
+
+.input__movie--search {
+    width: 500px;
+}
+
+.movie__button {
+    font-weight: bold;
+}
+
+.button {
+    background-color: rgb(202, 201, 201);
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.fa-magnifying-glass-location {
+    
+}
+
+/*
+
+MOVIES PAGE
+
+*/
+
+.movie-card {
+    
+
+    height: 300px;
+    width: 100%;
+    max-width: 225px;
+    background-color: rgb(240, 238, 238);
+    border-radius: 5px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 225px;
+    
+    
+
+}
+
+.movie-poster__info {
+    text-align: center;
+}
+
+.movie-card__container {
+   display: flex;
+   flex-direction: column;
+   align-items: space-between;
+}
+
+.movie-theatre {
+    font-weight: bold;
+}
+
+/* 
+
+SHOWTIMES
+
+*/
+
+
+.time-card {
+    
+    display: flex;
+    justify-content: center;
+    
+    padding-top: 16px;
+    height: 300px;
+    width: 100%;
+    max-width: 225px;
+    background-color: rgb(240, 238, 238);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.movie-theatre {
+    margin-bottom: 16px;
+}
+
+.movie__list--showtimes {
+    margin: 24px 0;
+}
+
+
