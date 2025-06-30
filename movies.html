@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Search Results</title>
     <link rel="stylesheet" href="style.css">
+     <script src="https://kit.fontawesome.com/d5048d8e17.js" crossorigin="anonymous"></script>
 </head>
+<body class="movie__body">
  <section id="landing landing__movie">
         <nav>
             <div class="nav__wrapper">
@@ -37,8 +39,21 @@
                 </ul>
             </div>
         </nav>
+        <div class="header__content movie-input__boxes--header-container">
+                <input class="input input__movie--search" placeholder="Enter Movie or Theatre"></input>
+                <a href="./movies.html" class="movie__nutton__link"> 
+                <button class="button movie__button">
+                    Enjoy!
+                </button>
+                </a> 
+                </br>
+                <input class="input input__zip-code--search" placeholder="Enter Zip Code"></input>
+                <button class="button zip-code__button">
+                    <i class="fa-solid fa-magnifying-glass-location"></i>
+                </button>
+        </div>        
     </section>    
-<body class="movie__body">
+
     <div class="container">
         <div class="row">
             <div class="movie__search--list">
