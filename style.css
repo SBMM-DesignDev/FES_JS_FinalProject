@@ -24,13 +24,13 @@
     z-index:5;
 }
 
-.movie__body,
 .time__body {
     background-color: #242424 !important;
 }
 
 .container {
     width: 100%;
+   
     
     
 }
@@ -39,6 +39,8 @@
     
     max-width: 1000px;
     margin: 0 auto;
+    
+    
     
 }
 
@@ -143,6 +145,15 @@ MOVIES PAGE
 
 */
 
+.movie__body {
+    /*background-image: url("./Assets/MovieScreen_Blnk3.png");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    width: 100%;
+    background-color: #242424;
+    
+}
+
 .movie-card {
     border: red solid 2px;
     height: 300px;
@@ -181,10 +192,46 @@ MOVIES PAGE
    flex-wrap: wrap;
    justify-content: space-around;
    width: 100%;
+   position: relative;
 }
 
 .movie-input__boxes--header-container{
     padding-bottom: 48px;
+}
+
+.loading {
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    z-index: -1;
+    
+    
+}
+
+.fa-spinner {
+    animation: spinner 750ms infinite;
+    
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.search__results {
+    z-index: 1;
 }
 
 /* 

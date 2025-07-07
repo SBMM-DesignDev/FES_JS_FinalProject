@@ -3,21 +3,37 @@
 const moviesHTML = document.querySelector('.movie__search--list');
 const userInput = document.querySelector('.input__movie--search')
 
-async function movieSearch() {
+async function movieSearch(movieQuery) {
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=ice
-    const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${userInput}`);
+    const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${movieQuery}`);
     const moviesData = await movies.json();
     console.log(moviesData)
     moviesHTML.innerHTML = moviesData.Search.map((movie) => userHTML(movie)).join("");
 }
 
-movieSearch();
+function movieResults() {
+    event.preventDefault();
+   
+    const spin = document.querySelector('.fa-spinner')
+    const loading = document.querySelector('.loading');
+    const results = document.querySelector('.movie__search--list');
+    loading.classList += " .search__results";
+    spin.classList += " .search__results"
+    setTimeout(() => {
+        loading.classList.remove('.loading');
+        spin.classList.remove('.fa-spinner');
+        results.classList += " .search__results";
+    }, 3000);
+     
+    movieSearch(userInput.value)
+}
 
-function showMovieInfo(userInput) {
+
+/*function showMovieInfo(userInput) {
     localStorage.setItem("id", userInput);
     window.location.href = `${window.location.origin}/movies.html`
    
-}
+}*/
 
 
 function userHTML(movie) {

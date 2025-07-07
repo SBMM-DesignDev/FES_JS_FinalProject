@@ -41,7 +41,7 @@
         </nav>
         <div class="header__content movie-input__boxes--header-container">
                 <input class="input input__movie--search" placeholder="Enter Movie or Theatre"></input>
-                <a href="./movies.html" class="movie__nutton__link"> 
+                <a href="./movies.html" class="movie__button__link" onclick="movieResults()"> 
                 <button class="button movie__button">
                     Enjoy!
                 </button>
@@ -57,24 +57,16 @@
     <div class="container">
         <div class="row">
             <div class="movie__search--list">
-                <div class="movie">
-                    <div class="movie-card">
-                        <div class="movie-card__container">
-                            <div class="movie-poster"></div>
-                            <div class="movie-poster__info">
-                                <h3 class="movie-title"></h3>
-                                <h5 class="movie-year"></h5>
-                                <p class="movie-theatre">IMAX Cinema</p>
-                                <p class="movie-theatre__location">Movie City, USA</p>
-                                <p class="movie-theatre--phone">(800)MOV-IE11</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                </div>   
             </div>
+             
         </div>
+       
     </div>
+   
 <script src="index.js"></script>   
 </body>
 </html>
