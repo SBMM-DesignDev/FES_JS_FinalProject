@@ -49,6 +49,13 @@
 LANDING
 
 */
+nav {
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 75px;
+    z-index:5;
+}
 
 .nav__wrapper {
     display: flex;
@@ -102,6 +109,7 @@ HEADER
 
 .header__content {
     text-align: center;
+    margin-top: 72px;
 }
 
 .header__title {
@@ -125,6 +133,14 @@ HEADER
     width: 500px;
 }
 
+.input:hover {
+    background-color: rgb(202, 201, 201);
+}
+
+.link__hover-effect:hover {
+    text-decoration: underline;
+}
+
 .movie__button {
     font-weight: bold;
 }
@@ -135,8 +151,48 @@ HEADER
     border-radius: 5px;
 }
 
-.fa-magnifying-glass-location {
+.button:hover {
+    background-color: rgb(174, 173, 173);
+}
+
+.button:active {
+    background-color: rgb(163, 135, 135);
+}
+
+.zip-code__button {
+    cursor: not-allowed;
+}
+
+/*.header__img {
+    position:absolute;
+    z-index: -1;
+    width: 100%;
     
+    max-width: 500px;
+    max-height: 700px;
+    left:0;
+    top: 0;
+}
+
+.header__img--wrapper {
+    position:relative;
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    max-width: 700px;
+    
+}*/
+
+.header__img--wrapper {
+    margin-bottom: 16px;
+    width: 100%;
+    max-height: 700px;
+}
+
+.header__img {
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
 }
 
 /*
@@ -156,7 +212,7 @@ MOVIES PAGE
 
 .movie-card {
     border: red solid 2px;
-    height: 300px;
+    height: 350px;
     width: 25%;
     max-width: 225px;
     background-color: rgb(240, 238, 238);
@@ -193,7 +249,7 @@ MOVIES PAGE
    justify-content: space-around;
    width: 100%;
    height: 100%;
-   min-height: 300px;
+   margin-bottom: 96px;
    position: relative;
    z-index: 10;
    background-color: #242424;
@@ -203,21 +259,28 @@ MOVIES PAGE
     padding-bottom: 48px;
 }
 
-.loading {
-    background-color: green;
+.movies__loading {
+   
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    min-height: 300px;
+    /*min-height: 300px;*/
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 80px;
     z-index: 0;
+ }
+
+ .loading__movies--spinner {
+   display: none !important;
     
-    
+}
+
+.movies__loading .loading__movies--spinner {
+    display: block !important;
 }
 
 .fa-spinner {
@@ -235,37 +298,91 @@ MOVIES PAGE
     }
 }
 
-.search__results {
-    z-index: 20;
-}
-
 /* 
 
-SHOWTIMES
+FOOTER
 
 */
 
 
-.time-card {
+footer {
+    width: 100%;
     
+}
+
+.footer__container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.footer__link--list {
+    list-style: none;
     display: flex;
     justify-content: center;
-    
-    padding-top: 16px;
-    height: 300px;
-    width: 100%;
-    max-width: 225px;
-    background-color: rgb(240, 238, 238);
-    border-radius: 5px;
-    text-align: center;
-}
-
-.movie-theatre {
     margin-bottom: 16px;
+    font-weight: bold;
+    
+
+    
+
+
 }
 
-.movie__list--showtimes {
-    margin: 24px 0;
+.footer__link {
+    margin-left: 32px;
+}
+
+.footer__copy-right {
+   text-align: center;
+   padding-left: 50px;
+   border-top: 2px solid red;
+   margin-bottom: 64px; 
+}
+
+.footer__para {
+    font-size: 14px;
+    margin-top: 24px;
+    
+    
 }
 
 
+
+
+
+
+/* 
+
+MEDIA QUERY
+
+*/
+
+@media (max-width: 768px) {
+
+    nav {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .movie__search--list {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around
+    }
+
+    .movie-card {
+        width: 33%;
+        max-width: 200px;
+        max-height: 315px;
+        padding: 0 4px;
+    }
+
+
+}
