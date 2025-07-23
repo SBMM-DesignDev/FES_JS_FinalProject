@@ -1,10 +1,12 @@
 
 
 const moviesHTML = document.querySelector('.movie__search--list');
-const userInput = document.querySelector('.input__movie--search')
+const userInput = document.querySelector('.input__movie--search');
+const keyWord = document.querySelector('.search-by');
+const movieScreen = document.querySelector('.row__img');
 
 async function movieSearch(movieQuery) {
-
+   //movieScreen.classList.remove('.row__img');
     //const loading = document.querySelector('.loading');
     //const results = document.querySelector('.movie__search--list');
     moviesHTML.classList += " movies__loading";
@@ -13,11 +15,16 @@ async function movieSearch(movieQuery) {
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=ice
     const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${movieQuery}`);
     const moviesData = await movies.json();
-    console.log(moviesData)
+   moviesData.Search.length = 6;
+    console.log(moviesData);
     moviesHTML.innerHTML = moviesData.Search.map((movie) => userHTML(movie)).join("");
 
      moviesHTML.classList.remove('movies__loading')
+
+     keyWord.innerHTML = `<p class="key-word">Search Keyword "${movieQuery}"</p>`
 }
+
+
 
 function movieResults() {
     
@@ -36,9 +43,15 @@ function movieResults() {
 
 
 function userHTML(movie) {
-    return `<div class="movie-card" )">
+
+
+    return `
+    <div class="movie-card" )">
+        
         <div class="movie-card__container">
-            <div class="movie-poster"></div>
+            <div class="movie-poster">
+                <img class="movie-poster--img" src="${movie.Poster}" alt="movie poster">
+            </div>
             <div class="movie-poster__info">
                 <h3 class="movie-title">${movie.Title}</h3>
                 <h5 class="movie-year">${movie.Year}</h5>
