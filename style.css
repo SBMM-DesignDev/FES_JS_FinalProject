@@ -39,6 +39,7 @@
     
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
 }
 
 .row__img {
@@ -280,7 +281,7 @@ MOVIES PAGE
    max-width: 800px;
   
    max-height: 600px;
-   margin-bottom: px;
+   
    position: relative;
    z-index: 10;
   
@@ -298,11 +299,11 @@ MOVIES PAGE
     background-color: #242424;
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 100px;
     width: 100%;
     height: 100%;
-    max-width: 1000px;
-    height: 100vh;
+    max-width: 800px;
+    height: 35vh;
     /*min-height: 300px;*/
     display: flex;
     justify-content: center;
@@ -350,6 +351,15 @@ MOVIES PAGE
     margin-bottom: 48px;
   
 }
+
+.sort__movies {
+    
+    position: absolute;
+
+    left: 880px;
+}
+
+
 
 /* 
 
@@ -437,6 +447,111 @@ MEDIA QUERY
         max-height: 315px;
         padding: 0 4px;
     }
+
+
+}
+
+
+@media (max-width: 550px) {
+    .container {
+       width: 100%;
+     
+       height: 100%;
+       
+
+    }
+
+
+    .row {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    footer {
+         margin-top: 25px;
+         width: 100%;
+    }
+
+    .footer__container {
+        margin-top: 100px;
+    }
+
+    .footer__copy-right {
+        width: 100%;
+        max-width: 450px;
+        margin-left: 45px;
+        
+    }
+
+    nav {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .header__content {
+        width: 100%;
+        max-width: 450px;
+        margin-left: 45px;
+    }
+
+    .input__movie--search {
+        width: 100%;
+        max-width: 350px
+    }
+
+    .movie__search--list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+
+    .movie-card {
+        width: 33%;
+        max-width: 175px;
+        max-height: 250px;
+        
+
+    }
+
+    .movie-poster__info {
+        position: absolute;
+        width: 100%;
+        max-width: 120px;
+        left: 8px;
+        bottom: 25px;
+        opacity: 1;
+        border: red solid 2px;
+        padding: 4px;
+        
+    }
+
+    .movies__loading {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        left: 25px;
+    }
+
+    
+    .movie-title,
+    .movie-theatre {
+        font-size: 12px;
+    }
+
+    .movie-year {
+        font-size: 11px;
+    }
+
+    .movie-theatre__location,
+    .movie-theatre--phone {
+        font-size: 11px;
+    }
+
+    .movie-card__container {
+        position: relative;
+    }
+
 
 
 }

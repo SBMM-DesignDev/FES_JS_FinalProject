@@ -4,13 +4,19 @@ const moviesHTML = document.querySelector('.movie__search--list');
 const userInput = document.querySelector('.input__movie--search');
 const keyWord = document.querySelector('.search-by');
 const movieScreen = document.querySelector('.row__img');
+const sortMovies = document.querySelector('.sort__movies');
+const sortFunction = movieSort(event.target.value);
+const movieQuery = movieResults();
 
-async function movieSearch(movieQuery) {
+async function movieSearch(sortFunction, movieQuery) {
    //movieScreen.classList.remove('.row__img');
     //const loading = document.querySelector('.loading');
     //const results = document.querySelector('.movie__search--list');
     moviesHTML.classList += " movies__loading";
    
+   // if (sortFunction === "LATEST") {
+       // moviesData.Search
+   // }
    
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=ice
     const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${movieQuery}`);
@@ -22,6 +28,17 @@ async function movieSearch(movieQuery) {
      moviesHTML.classList.remove('movies__loading')
 
      keyWord.innerHTML = `<p class="key-word">Search Keyword "${movieQuery}"</p>`
+
+     sortMovies.innerHTML = `<select id="filter" onchange="movieSort(event)" >
+                                <option value="" disabled selected>Sort</option>
+                                <option value="LATEST">Latest Release</option>
+                                <option value="EARLIEST">Earliest Release</option>
+                            </select>`
+}
+
+function movieSort(event) {
+    movieSearch(event.target.value)
+   
 }
 
 
