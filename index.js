@@ -8,52 +8,78 @@ const sortMovies = document.querySelector('.sort__movies');
 const sort = movieSort();
 const movieQuery = movieResults();
 
-async function movieSearch(movieQuery, sort) {
+async function movieSearch(query, sortSearch) {
    //movieScreen.classList.remove('.row__img');
     //const loading = document.querySelector('.loading');
     //const results = document.querySelector('.movie__search--list');
     moviesHTML.classList += " movies__loading";
    
-   if (sort === "LATEST") {
-        console.log(sort)
-    }
+
    
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=ice
-    const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${movieQuery}`);
+    const movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${query}`);
     const moviesData = await movies.json();
-   moviesData.Search.length = 6;
+    moviesData.Search.length = 6;
     console.log(moviesData);
     moviesHTML.innerHTML = moviesData.Search.map((movie) => userHTML(movie)).join("");
 
      moviesHTML.classList.remove('movies__loading')
 
-     keyWord.innerHTML = `<p class="key-word">Search Keyword "${movieQuery}"</p>`
+     keyWord.innerHTML = `<p class="key-word">Search Keyword "${query}"</p>`
 
-     sortMovies.innerHTML = `<select id="filter"> 
+    if (sortSearch === "LATEST") {
+        moviesData.sort((a,b) => b.Year - a.Year);
+        
+     }
+     else if (sortSearch === "EARLIEST") {
+        moviesData.sort((a,b) => a.Year - b.Year);
+        
+     }
+
+     sortMovies.innerHTML = `<select id="filter" onchange="movieSort(event.target.value)"> 
                                 <option value="" disabled selected>Sort</option>
                                 <option value="LATEST">Latest Release</option>
                                 <option value="EARLIEST">Earliest Release</option>
                             </select>`
 }
 
-function movieSort() {
-    
-   document.getElementById('filter').addEventListener('onchange', (event) => {
-        const sort = event.target.value;
-         movieSearch(event, sort);
+function movieSort(sorted) {
+   
+//    document.getElementById('filter').addEventListener('onchange', (event) => {
+//         const sort = event.target.value;
         
-   });
-    //movieSearch(event.target.value)
-
+//          movieSearch(event, sort);
+//          return
+        
+//    });
+         
+    //      if (sorted === "LATEST") {
+    //     console.log(sorted)
+    // }
+    // else if (sorted === "EARLIEST") {
+    //     console.log(sorted)
+    // }
+        
+     return movieSearch(sorted);
+   
 };
+
+
+
+
+
+
+
 
 
 
 function movieResults() {
     
-     
+    
     event.preventDefault();
-    movieSearch(userInput.value)
+    
+   return movieSearch(userInput.value);
+
 }
 
 
