@@ -46,12 +46,14 @@
              <!--figure class="header__img--wrapper">
                 <img class="header__img" src="./Assets/Movie_Screen_CS.jpg">
             </figure-->
+            <div class="movie__input-button--wrapper">
                 <input id="movie-input" class="input input__movie--search" placeholder="Enter Movie or Theatre"></input>
-                <a href="./movies.html" class="movie__button__link" onclick="movieResults(movieQuery, sort)"> 
-                <button class="button button movie__button">
-                    Enjoy!
-                </button>
-                </a> 
+                <div class="movie__button--link" onclick="movieResults()"> 
+                    <button class="button button movie__button">
+                        Enjoy!
+                    </button>
+                </div> 
+            </div>    
                 </br>
                 <input id="zip-input" class="input input__zip-code--search" placeholder="Enter Zip Code" disabled></input>
                 <button class="button zip-code__button">
