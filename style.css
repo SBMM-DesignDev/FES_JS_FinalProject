@@ -37,7 +37,7 @@
 
 .row {
     
-    max-width: 1000px;
+    /*max-width: 1000px;*/
     margin: 0 auto;
     position: relative;
 }
@@ -339,7 +339,9 @@ MOVIES PAGE
      
 }
 
-
+.options .filter-options {
+    display: block;
+}
 
 .fa-spinner {
     animation: spinner 750ms infinite;
@@ -365,9 +367,20 @@ MOVIES PAGE
 
 .sort__movies {
     
-    position: absolute;
+   
 
     left: 880px;
+}
+
+.search-by {
+    width: 100%;
+    
+}
+
+.filter-options {
+   position: absolute;
+    left: 1000px;
+    z-index: 20;
 }
 
 
