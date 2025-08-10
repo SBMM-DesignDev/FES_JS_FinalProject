@@ -24,7 +24,11 @@ async function movieSearch(query) {
 
      keyWord.innerHTML = `<p class="key-word">Search Keyword "${query}"</p>`
 
-    
+        sortMovies.innerHTML = `<select id="filter" class="filter-options" onchange="movieSort(event)"> 
+                                <option value="" disabled selected>Sort</option>
+                                <option value="LATEST">Latest Release</option>
+                                <option value="EARLIEST">Earliest Release</option>
+                            </select>`
 
      
 
@@ -36,12 +40,18 @@ async function movieSearch(query) {
 
 
 async function movieResults() {
-
-    //console.log(userInput.value)
+    const query = userInput.value.trim()
+    
+    if (!query) {
+        return;
+    }
+    else if (query) {
+        movieSearch(query);
+    }
     //console.log(movieSearch(userInput.value))
-    const search = await movieSearch(userInput.value);
+    //const search = await movieSearch(userInput.value);
     //console.log(search)
-     movieSearch(search);
+    // movieSearch(search);
    
 }
 
@@ -73,8 +83,16 @@ function userHTML(movie) {
 /////////////////////////////////////////
 
 async function renderMovies(filter) {
+    const query = userInput.value.trim();
+            if (!query) {
+                return;
+            }
+            else if (query) {
+                movieSearch(query);
+            }
+
         console.log(filter)
-     arrayAPI = await movieSearch();
+     arrayAPI = await movieSearch(query);
         console.log(arrayAPI)
      if (filter === "LATEST") {
         arrayAPI.sort((a,b) => b.Year - a.Year);
@@ -83,16 +101,11 @@ async function renderMovies(filter) {
         arrayAPI.sort((a,b) => a.Year - b.Year);
      }
 
-    //  sortMovies.innerHTML = `<select id="filter" class="filter-options" onchange="movieSort(event)"> 
-    //                             <option value="" disabled selected>Sort</option>
-    //                             <option value="LATEST">Latest Release</option>
-    //                             <option value="EARLIEST">Earliest Release</option>
-    //                         </select>`
+  
 
 
-const moviesFilterResults = arrayAPI
-    .map((movie) => {
-    return `
+const moviesFilterResults = arrayAPI.map((movie) => userHTML(movie)).join("");
+  /*  return `
     <div class="movie-card" )">
         
         <div class="movie-card__container">
@@ -109,7 +122,7 @@ const moviesFilterResults = arrayAPI
         </div>
     </div>`;
         })
-        .join("");
+        .join("");*/
 
     moviesHTML.innerHTML = moviesFilterResults
 

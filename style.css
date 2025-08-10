@@ -37,7 +37,7 @@
 
 .row {
     
-    /*max-width: 1000px;*/
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
 }
@@ -100,7 +100,7 @@ nav {
 }
 
 .nav__link--anchor {
-
+    cursor: not-allowed;
 
 }
 
@@ -379,7 +379,7 @@ MOVIES PAGE
 
 .filter-options {
    position: absolute;
-    left: 1000px;
+    left: 880px;
     z-index: 20;
 }
 
@@ -421,6 +421,7 @@ footer {
 
 .footer__link {
     margin-left: 32px;
+    cursor: not-allowed;
 }
 
 .footer__copy-right {
