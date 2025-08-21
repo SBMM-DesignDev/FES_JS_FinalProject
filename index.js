@@ -4,50 +4,54 @@ const moviesHTML = document.querySelector('.movie__search--list');
 const userInput = document.querySelector('.input__movie--search');
 const keyWord = document.querySelector('.search-by');
 const sortMovies = document.querySelector('.sort__movies');
-let moviesData;
+//let data;
 
 async function movieSearch(query) {
     //const loading = document.querySelector('.loading');
     //const results = document.querySelector('.movie__search--list');
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=i
-     moviesHTML.classList += " movies__loading";
+    moviesHTML.classList += " movies__loading";
+   
     const  movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${query}`);
-    
-   
-    //const moviesData = await movies.json();
-      if (!moviesData) {
-         
-        moviesData = await movies.json();
-     }
-   
-      moviesHTML.classList.remove('movies__loading')
+    const moviesData = await movies.json();
+    let data = moviesData.Search;
+    console.log(moviesData);
+    console.log(moviesData.Search);
+    console.log(data);
+    console.log(data.Search);
+    moviesHTML.classList.remove('movies__loading');
         
-   
-     moviesData.Search.length = 6;
-    //console.log(moviesData.Search);
-    moviesHTML.innerHTML = moviesData.Search.map((movie) => userHTML(movie)).join("");
+   if (!data) {
+        moviesHTML.innerHTML = `<p> No Results Found</p>`
+        keyWord.innerHTML =  `<p class="key-word">No Results Found</p>`
+        return [];
+     }
 
-    // if (!moviesData) {
-    //     moviesData = await movies.json();
-    // }
+    data.length = 6;
+    //console.log(data);
+    moviesHTML.innerHTML = data.map((movie) => userHTML(movie)).join("");
 
-    
+    //   if (!data) {
+         
+    //      data = await movies.json();
+    //  }
 
      keyWord.innerHTML = `<p class="key-word">Search Keyword "${query}"</p>`
 
    
 
-        sortMovies.innerHTML = `<select id="filter" class="filter-options" onchange="movieSort(event)"> 
+     sortMovies.innerHTML = `<select id="filter" class="filter-options" onchange="movieSort(event)"> 
                                 <option value="" disabled selected>Sort</option>
                                 <option value="LATEST">Latest Release</option>
                                 <option value="EARLIEST">Earliest Release</option>
                             </select>`
         
-
+     
+     
         
      
 
-               return moviesData.Search;          
+               return data;          
 };
 
 
@@ -108,15 +112,18 @@ async function renderMovies(filter) {
                 movieSearch(query);
             }
 
-           // const arrayAPI = await movieSearch(query);
-            const sortedMovies = moviesHTML;
-             sortedMovies.classList += " movies__loading";
+           //arrayAPI = await movieSearch(query);
+           console.log(arrayAPI)
+            //const sortedMovies = moviesHTML;
+             moviesHTML.classList += 'movies__loading';
     
              if(!arrayAPI) {
                 arrayAPI = await movieSearch(query);
-                }
-
-             sortedMovies.classList.remove('movies__loading')
+                }   
+              
+                
+            
+                moviesHTML.classList.remove('movies__loading');
            
 
      if (filter === "LATEST") {
