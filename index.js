@@ -4,37 +4,72 @@ const moviesHTML = document.querySelector('.movie__search--list');
 const userInput = document.querySelector('.input__movie--search');
 const keyWord = document.querySelector('.search-by');
 const sortMovies = document.querySelector('.sort__movies');
-//let data;
+
+let arrayAPI = [];
 
 async function movieSearch(query) {
     //const loading = document.querySelector('.loading');
     //const results = document.querySelector('.movie__search--list');
     // wokring url https://omdbapi.com/?apikey=242fafd7&s=i
-    moviesHTML.classList += " movies__loading";
+  
    
     const  movies = await fetch(`https://omdbapi.com/?apikey=242fafd7&s=${query}`);
     const moviesData = await movies.json();
-    let data = moviesData.Search;
-    console.log(moviesData);
     console.log(moviesData.Search);
-    console.log(data);
-    console.log(data.Search);
+    return moviesData.Search || [];
+   
+};
+
+
+/////////////////////////////////
+
+
+//let clear = '';
+
+async function movieResults() {
+    
+    const query = userInput.value.trim()
+    
+    if (!query) {
+        return;
+    }
+    
+   
+
+   
+      
+      
+      
+    if (moviesHTML !== '') {
+         moviesHTML.innerHTML = '';  
+    }
+       
+    moviesHTML.classList += " movies__loading"; 
+    
+     
+    
+    const data = movieSearch(query);
+
+//    if (moviesHTML.innerHTML === clear || moviesHTML.innerHMTL !== clear) {
+//     arrayAPI = await data;
+
+//    }
+     arrayAPI = await data;
     moviesHTML.classList.remove('movies__loading');
-        
-   if (!data) {
-        moviesHTML.innerHTML = `<p> No Results Found</p>`
-        keyWord.innerHTML =  `<p class="key-word">No Results Found</p>`
-        return [];
+         
+
+   if (arrayAPI.length === 0) {
+        moviesHTML.innerHTML = `<p> No Results Found</p>`;
+        keyWord.innerHTML =  `<p class="key-word">No Results Found</p>`;
+        sortMovies.innerHTML = '';
+        return;
      }
 
-    data.length = 6;
+    arrayAPI.length = 6;
     //console.log(data);
-    moviesHTML.innerHTML = data.map((movie) => userHTML(movie)).join("");
+   
 
-    //   if (!data) {
-         
-    //      data = await movies.json();
-    //  }
+   
 
      keyWord.innerHTML = `<p class="key-word">Search Keyword "${query}"</p>`
 
@@ -47,30 +82,7 @@ async function movieSearch(query) {
                             </select>`
         
      
-     
-        
-     
-
-               return data;          
-};
-
-
-/////////////////////////////////
-
-
-async function movieResults() {
-    const query = userInput.value.trim()
-    
-    if (!query) {
-        return;
-    }
-    else if (query) {
-        movieSearch(query);
-    }
-    //console.log(movieSearch(userInput.value))
-    //const search = await movieSearch(userInput.value);
-    //console.log(search)
-    // movieSearch(search);
+     renderMovies();
    
 }
 
@@ -100,44 +112,26 @@ function userHTML(movie) {
 }
 
 /////////////////////////////////////////
-let arrayAPI;
+
 async function renderMovies(filter) {
      
+        let moviesToRender = arrayAPI;
 
-    const query = userInput.value.trim();
-            if (!query) {
-                return;
-            }
-            else if (query) {
-                movieSearch(query);
-            }
-
-           //arrayAPI = await movieSearch(query);
-           console.log(arrayAPI)
-            //const sortedMovies = moviesHTML;
-             moviesHTML.classList += 'movies__loading';
-    
-             if(!arrayAPI) {
-                arrayAPI = await movieSearch(query);
-                }   
-              
-                
-            
-                moviesHTML.classList.remove('movies__loading');
-           
+          rendered = await moviesToRender;
+          console.log(rendered); 
 
      if (filter === "LATEST") {
-        arrayAPI.sort((a,b) => b.Year - a.Year);
+        rendered.sort((a,b) => b.Year - a.Year);
      }
      else if (filter === "EARLIEST") {
-        arrayAPI.sort((a,b) => a.Year - b.Year);
+        rendered.sort((a,b) => a.Year - b.Year);
      }
-    
-    
-    const moviesFilterResults = arrayAPI.map((movie) => userHTML(movie)).join("");
+     
+     const moviesHTMLString = rendered.map((movie) => userHTML(movie)).join("");
 
-    moviesHTML.innerHTML = moviesFilterResults
-
+     
+    
+     moviesHTML.innerHTML = moviesHTMLString;
     
     
 }
@@ -146,15 +140,8 @@ async function renderMovies(filter) {
 
 function movieSort(event) {
    
-//    document.getElementById('filter').addEventListener('onchange', (event) => {
-//         const sort = event.target.value;
-        
-//          movieSearch(event, sort);
-//          return
-        
-//    });
-        
-        renderMovies(event.target.value);
+      const  sortFilter = event.target.value;
+        renderMovies(sortFilter);
 }
 
 
